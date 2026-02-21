@@ -110,27 +110,32 @@ export function ThemeProvider({
   initialTheme,
   storageKey = 'super-space-rpg-theme'
 }: ThemeProviderProps) {
-  // Initialize with default or stored theme
+  // Initialize with default theme only (no localStorage during SSR)
   const [theme, setTheme] = useState<ThemeConfig>(() => {
     if (initialTheme) return initialTheme;
-    
-    // Try to load from localStorage
-    if (typeof window !== 'undefined') {
-      try {
-        const stored = localStorage.getItem(storageKey);
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          if (parsed && parsed.id && parsed.colors) {
-            return parsed as ThemeConfig;
-          }
-        }
-      } catch {
-        // Ignore parse errors
-      }
-    }
-    
     return defaultTheme as ThemeConfig;
   });
+  
+  // Load stored theme after hydration (runs once)
+  useEffect(() => {
+    if (initialTheme) return;
+    
+    try {
+      const stored = localStorage.getItem(storageKey);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed && parsed.id && parsed.colors) {
+          // Defer setState to avoid synchronous state update in effect
+          const timer = setTimeout(() => {
+            setTheme(parsed as ThemeConfig);
+          }, 0);
+          return () => clearTimeout(timer);
+        }
+      }
+    } catch {
+      // Ignore parse errors
+    }
+  }, [initialTheme, storageKey]);
   
   const themeId = theme.id;
   

@@ -67,30 +67,35 @@ export function GameConfigProvider({
   initialConfig,
   storageKey = 'super-space-rpg-config'
 }: GameConfigProviderProps) {
-  // Initialize config
+  // Initialize config (no localStorage during SSR)
   const [config, setConfig] = useState<GameConfig>(() => {
     if (initialConfig) return initialConfig;
-    
-    // Try to load from localStorage
-    if (typeof window !== 'undefined') {
-      try {
-        const stored = localStorage.getItem(storageKey);
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          if (parsed && parsed.id && parsed.grid) {
-            return parsed as GameConfig;
-          }
-        }
-      } catch {
-        // Ignore parse errors
-      }
-    }
-    
     return defaultGameConfig as GameConfig;
   });
   
   // Game state
   const [state, setStateInternal] = useState<GameState>(initialGameState);
+  
+  // Load stored config after hydration
+  useEffect(() => {
+    if (initialConfig) return;
+    
+    try {
+      const stored = localStorage.getItem(storageKey);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed && parsed.id && parsed.grid) {
+          // Defer setState to avoid synchronous state update in effect
+          const timer = setTimeout(() => {
+            setConfig(parsed as GameConfig);
+          }, 0);
+          return () => clearTimeout(timer);
+        }
+      }
+    } catch {
+      // Ignore parse errors
+    }
+  }, [initialConfig, storageKey]);
   
   const configId = config.id;
   
