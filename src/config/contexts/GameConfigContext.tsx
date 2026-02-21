@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
-import type { GameConfig, GameState } from './schemas/game.schema';
-import defaultGameConfig from './defaults/game-default.json';
+import type { GameConfig, GameState } from '../schemas/game.schema';
+import defaultGameConfig from '../defaults/game-default.json';
 
 // ==========================================
 // GAME CONFIG CONTEXT
@@ -121,7 +121,7 @@ export function GameConfigProvider({
     setConfig(prev => ({
       ...prev,
       [section]: {
-        ...prev[section],
+        ...(prev[section] as object),
         ...updates,
       },
     }));

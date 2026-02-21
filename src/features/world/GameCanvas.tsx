@@ -1137,5 +1137,3 @@ const NPCSprite = memo(function NPCSprite({ npc }: { npc: NPC }) {
     </div>
   );
 });
-
-export default GameCanvas;

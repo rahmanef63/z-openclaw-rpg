@@ -238,7 +238,7 @@ function SoundEffectProvider({ children }: { children?: React.ReactNode }) {
 // PREDEFINED SOUND EFFECTS
 // ===========================================
 
-export const SoundEffects = {
+export const soundEffectActions = {
   // UI
   click: () => useSoundManager.getState().play('click'),
   hover: () => useSoundManager.getState().play('hover'),

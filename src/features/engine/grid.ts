@@ -3,6 +3,9 @@
 import { TILE_SIZE, MAP_WIDTH, MAP_HEIGHT } from './constants';
 import type { Position, GridPosition } from './types';
 
+// Alias for backward compatibility
+export const CELL_SIZE = TILE_SIZE;
+
 /**
  * Convert grid position to pixel position
  */
@@ -32,9 +35,12 @@ export function snapToGrid(x: number, y: number): Position {
 
 /**
  * Check if a grid position is within map bounds
+ * Overload that accepts optional map dimensions
  */
-export function isInBounds(gridX: number, gridY: number): boolean {
-  return gridX >= 0 && gridX < MAP_WIDTH && gridY >= 0 && gridY < MAP_HEIGHT;
+export function isInBounds(gridX: number, gridY: number, mapWidth?: number, mapHeight?: number): boolean {
+  const width = mapWidth ?? MAP_WIDTH;
+  const height = mapHeight ?? MAP_HEIGHT;
+  return gridX >= 0 && gridX < width && gridY >= 0 && gridY < height;
 }
 
 /**
@@ -181,3 +187,6 @@ export function findPath(
   
   return []; // No path found
 }
+
+// Alias for backward compatibility
+export const getGridKey = createCollisionKey;

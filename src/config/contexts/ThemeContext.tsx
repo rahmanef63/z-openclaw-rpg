@@ -1,9 +1,9 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
-import type { ThemeConfig } from './schemas/theme.schema';
-import { CSS_VAR_MAPPINGS } from './schemas/theme.schema';
-import defaultTheme from './defaults/theme-pixel-art.json';
+import type { ThemeConfig } from '../schemas/theme.schema';
+import { CSS_VAR_MAPPINGS } from '../schemas/theme.schema';
+import defaultTheme from '../defaults/theme-pixel-art.json';
 
 // ==========================================
 // THEME CONTEXT

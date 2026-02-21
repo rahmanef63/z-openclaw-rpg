@@ -4,6 +4,7 @@
  */
 
 import { getGridKey, gridDistance } from '../engine/grid'
+import type { GridPosition } from '../engine/types'
 
 interface PathNode {
   x: number
@@ -33,12 +34,15 @@ export function findPath(
   const openSet: PathNode[] = []
   const closedSet = new Set<string>()
   
+  const startPos: GridPosition = { gridX: startX, gridY: startY };
+  const endPos: GridPosition = { gridX: endX, gridY: endY };
+  
   const startNode: PathNode = {
     x: startX,
     y: startY,
     g: 0,
-    h: gridDistance(startX, startY, endX, endY),
-    f: gridDistance(startX, startY, endX, endY),
+    h: gridDistance(startPos, endPos),
+    f: gridDistance(startPos, endPos),
     parent: null,
   }
   
@@ -84,8 +88,9 @@ export function findPath(
         continue
       }
       
+      const neighborPos: GridPosition = { gridX: neighbor.x, gridY: neighbor.y };
       const g = current.g + 1
-      const h = gridDistance(neighbor.x, neighbor.y, endX, endY)
+      const h = gridDistance(neighborPos, endPos)
       const f = g + h
       
       // Check if already in open set with better path

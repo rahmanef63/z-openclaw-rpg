@@ -1,8 +1,8 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-
 /* Import Pixel Art Font */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 

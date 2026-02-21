@@ -1,1 +1,1 @@
-export * from './character/input'
+export * from './input'
