@@ -1,0 +1,186 @@
+{
+  "id": "pixel-art",
+  "name": "Pixel Art RPG",
+  "version": "1.0.0",
+  "author": "Super Space RPG Team",
+  "description": "Classic pixel art RPG theme with retro aesthetics",
+  
+  "fonts": {
+    "primary": "'Press Start 2P', 'Courier New', monospace",
+    "secondary": "'Courier New', monospace",
+    "sizes": {
+      "xs": "6px",
+      "sm": "8px",
+      "base": "10px",
+      "lg": "12px",
+      "xl": "14px"
+    }
+  },
+  
+  "colors": {
+    "background": "#1a1c2c",
+    "foreground": "#f4f4f4",
+    
+    "primary": "#f4b41a",
+    "primaryForeground": "#1a1c2c",
+    "secondary": "#3b5dc9",
+    "secondaryForeground": "#f4f4f4",
+    "accent": "#38b764",
+    "accentForeground": "#1a1c2c",
+    "muted": "#2c3048",
+    "mutedForeground": "#8b8fa3",
+    
+    "success": "#38b764",
+    "successForeground": "#1a1c2c",
+    "warning": "#f4b41a",
+    "warningForeground": "#1a1c2c",
+    "error": "#b13e53",
+    "errorForeground": "#f4f4f4",
+    "info": "#41a6f6",
+    "infoForeground": "#1a1c2c",
+    
+    "card": "#262b44",
+    "cardForeground": "#f4f4f4",
+    "popover": "#262b44",
+    "popoverForeground": "#f4f4f4",
+    
+    "border": "#566c86",
+    "input": "#262b44",
+    "ring": "#f4b41a",
+    
+    "pixel": {
+      "gold": "#f4b41a",
+      "goldLight": "#ffe05a",
+      "goldDark": "#c7941a",
+      "grass": "#38b764",
+      "grassLight": "#a7f070",
+      "grassDark": "#2d7a46",
+      "blood": "#b13e53",
+      "bloodLight": "#e07070",
+      "sky": "#41a6f6",
+      "skyLight": "#74c0fc",
+      "skyDark": "#1971c2",
+      "magic": "#8b5cf6",
+      "magicLight": "#a78bfa",
+      "wood": "#8b5a2b",
+      "stone": "#6b7280",
+      "borderLight": "#5a6988",
+      "borderDark": "#1a1c2c",
+      "highlight": "#f4f4f4",
+      "shadow": "#0d0e14"
+    },
+    
+    "aspects": {
+      "personal": "#06b6d4",
+      "career": "#41a6f6",
+      "finance": "#f4b41a",
+      "physical": "#38b764",
+      "mental": "#f472b6",
+      "social": "#f97316",
+      "spiritual": "#a855f7",
+      "intellectual": "#3b82f6",
+      "recreation": "#ec4899",
+      "environment": "#22c55e"
+    },
+    
+    "rarity": {
+      "common": "#94a3b8",
+      "commonBg": "#334155",
+      "uncommon": "#38b764",
+      "uncommonBg": "#1a3a2a",
+      "rare": "#41a6f6",
+      "rareBg": "#1a2a4a",
+      "epic": "#8b5cf6",
+      "epicBg": "#2a1a4a",
+      "legendary": "#f4b41a",
+      "legendaryBg": "#3a2a1a"
+    }
+  },
+  
+  "borders": {
+    "width": 4,
+    "radius": 0,
+    "style": "pixel",
+    "bevel": true,
+    "bevelWidth": 4
+  },
+  
+  "shadows": {
+    "none": "none",
+    "pixel": "4px 4px 0 rgba(0, 0, 0, 0.5)",
+    "glow": "0 0 10px var(--pixel-gold)",
+    "soft": "0 4px 6px -1px rgba(0, 0, 0, 0.3)",
+    "hard": "6px 6px 0 rgba(0, 0, 0, 0.6)"
+  },
+  
+  "animations": {
+    "bounce": {
+      "duration": 500,
+      "timing": "ease-out"
+    },
+    "shake": {
+      "duration": 300,
+      "timing": "ease-in-out"
+    },
+    "pulse": {
+      "duration": 1000,
+      "timing": "ease-in-out"
+    },
+    "blink": {
+      "duration": 1000
+    },
+    "float": {
+      "duration": 2000,
+      "timing": "ease-in-out"
+    },
+    "appear": {
+      "duration": 200,
+      "timing": "ease-out"
+    },
+    "spin": {
+      "duration": 1000,
+      "timing": "linear"
+    }
+  },
+  
+  "effects": {
+    "scanlines": false,
+    "scanlineOpacity": 0.1,
+    "crt": false,
+    "crtOpacity": 0.2,
+    "pixelPerfect": true,
+    "glowEffects": true
+  },
+  
+  "components": {
+    "button": {
+      "padding": "8px 16px",
+      "fontSize": "10px",
+      "fontFamily": "'Press Start 2P', monospace",
+      "textTransform": "uppercase",
+      "letterSpacing": "1px"
+    },
+    
+    "panel": {
+      "padding": "16px",
+      "headerPadding": "8px 12px",
+      "headerBackground": "linear-gradient(180deg, var(--secondary) 0%, #2a4494 100%)"
+    },
+    
+    "input": {
+      "padding": "8px 12px",
+      "fontSize": "10px"
+    },
+    
+    "progressBar": {
+      "height": 16,
+      "borderRadius": 0
+    },
+    
+    "minimap": {
+      "scale": 3,
+      "playerSize": 4,
+      "npcSize": 3
+    }
+  }
+}

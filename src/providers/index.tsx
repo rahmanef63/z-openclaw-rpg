@@ -3,6 +3,7 @@
 import React, { ReactNode } from 'react';
 import { HydrationProvider, useHydration, HydrationLoadingScreen } from './HydrationProvider';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
+import { ThemeProvider, GameConfigProvider } from '@/config';
 
 interface AppProvidersProps {
   children: ReactNode;
@@ -10,15 +11,19 @@ interface AppProvidersProps {
 
 function AppErrorFallback() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-slate-900 p-6">
+    <div className="flex flex-col items-center justify-center h-screen p-6 pixel-font" style={{ backgroundColor: 'var(--background)' }}>
       <div className="text-6xl mb-4">💥</div>
-      <h1 className="text-2xl font-bold text-red-400 mb-2">Super Space crashed!</h1>
-      <p className="text-slate-300 mb-4">An unexpected error occurred</p>
+      <h1 className="text-lg font-bold mb-2 pixel-text-shadow" style={{ color: 'var(--pixel-blood)' }}>
+        GAME CRASHED!
+      </h1>
+      <p className="text-xs mb-4" style={{ color: 'var(--muted-foreground)' }}>
+        An unexpected error occurred
+      </p>
       <button
         onClick={() => window.location.reload()}
-        className="px-6 py-2 bg-cyan-500 text-white rounded font-mono"
+        className="pixel-btn primary"
       >
-        Reload Page
+        RELOAD
       </button>
     </div>
   );
@@ -27,9 +32,13 @@ function AppErrorFallback() {
 export function AppProviders({ children }: AppProvidersProps) {
   return (
     <ErrorBoundary componentName="AppProviders" fallback={<AppErrorFallback />}>
-      <HydrationProvider timeout={5000}>
-        {children}
-      </HydrationProvider>
+      <ThemeProvider>
+        <GameConfigProvider>
+          <HydrationProvider timeout={5000}>
+            {children}
+          </HydrationProvider>
+        </GameConfigProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }

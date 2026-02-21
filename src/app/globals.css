@@ -9,25 +9,20 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --font-sans: var(--font-primary);
+  --font-mono: var(--font-primary);
+  --color-sidebar-ring: var(--ring);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-accent-foreground: var(--accent-foreground);
+  --color-sidebar-accent: var(--accent);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar: var(--card);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
-  --color-destructive: var(--destructive);
+  --color-destructive: var(--error);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -47,109 +42,123 @@
 }
 
 /* ==========================================
-   PIXEL ART RPG THEME
+   DEFAULT FALLBACK VALUES
+   These are overridden by ThemeContext
    ========================================== */
 
 :root {
-  --radius: 0px; /* Pixel art - no rounded corners */
+  /* Border radius - pixel art uses 0 */
+  --radius: 0px;
   
-  /* Pixel Art Color Palette - RPG Style */
-  --background: #1a1c2c;        /* Dark blue-black (night sky) */
-  --foreground: #f4f4f4;        /* Off-white for text */
-  --card: #262b44;              /* Dark purple-blue for panels */
-  --card-foreground: #f4f4f4;
-  --popover: #262b44;
-  --popover-foreground: #f4f4f4;
+  /* Base colors */
+  --background: #1a1c2c;
+  --foreground: #f4f4f4;
   
-  /* Primary - Gold/Yellow (RPG classic) */
+  /* UI colors */
   --primary: #f4b41a;
   --primary-foreground: #1a1c2c;
-  
-  /* Secondary - Deep blue */
   --secondary: #3b5dc9;
   --secondary-foreground: #f4f4f4;
-  
-  /* Muted - Dark slate */
+  --accent: #38b764;
+  --accent-foreground: #1a1c2c;
   --muted: #2c3048;
   --muted-foreground: #8b8fa3;
   
-  /* Accent - Bright green (like grass/health) */
-  --accent: #38b764;
-  --accent-foreground: #1a1c2c;
+  /* Semantic colors */
+  --success: #38b764;
+  --success-foreground: #1a1c2c;
+  --warning: #f4b41a;
+  --warning-foreground: #1a1c2c;
+  --error: #b13e53;
+  --error-foreground: #f4f4f4;
+  --info: #41a6f6;
+  --info-foreground: #1a1c2c;
   
-  /* Destructive - Red for damage */
-  --destructive: #b13e53;
-  
-  /* Borders - Dark outline for pixel look */
-  --border: #566c86;
-  --input: #262b44;
-  --ring: #f4b41a;
-  
-  /* Chart colors - Pixel art palette */
-  --chart-1: #f4b41a;           /* Gold */
-  --chart-2: #41a6f6;           /* Sky blue */
-  --chart-3: #38b764;           /* Green */
-  --chart-4: #b13e53;           /* Red */
-  --chart-5: #a7f070;           /* Light green */
-  
-  /* Sidebar */
-  --sidebar: #262b44;
-  --sidebar-foreground: #f4f4f4;
-  --sidebar-primary: #f4b41a;
-  --sidebar-primary-foreground: #1a1c2c;
-  --sidebar-accent: #3b5dc9;
-  --sidebar-accent-foreground: #f4f4f4;
-  --sidebar-border: #566c86;
-  --sidebar-ring: #f4b41a;
-  
-  /* Custom Pixel Art Variables */
-  --pixel-border-dark: #1a1c2c;
-  --pixel-border-light: #5a6988;
-  --pixel-highlight: #f4f4f4;
-  --pixel-shadow: #0d0e14;
-  --pixel-gold: #f4b41a;
-  --pixel-gold-dark: #c7941a;
-  --pixel-gold-light: #ffe05a;
-  --pixel-sky: #41a6f6;
-  --pixel-grass: #38b764;
-  --pixel-blood: #b13e53;
-  --pixel-magic: #8b5cf6;
-  --pixel-wood: #8b5a2b;
-  --pixel-stone: #6b7280;
-}
-
-.dark {
-  --background: #1a1c2c;
-  --foreground: #f4f4f4;
+  /* Cards */
   --card: #262b44;
   --card-foreground: #f4f4f4;
   --popover: #262b44;
   --popover-foreground: #f4f4f4;
-  --primary: #f4b41a;
-  --primary-foreground: #1a1c2c;
-  --secondary: #3b5dc9;
-  --secondary-foreground: #f4f4f4;
-  --muted: #2c3048;
-  --muted-foreground: #8b8fa3;
-  --accent: #38b764;
-  --accent-foreground: #1a1c2c;
-  --destructive: #b13e53;
+  
+  /* Borders */
   --border: #566c86;
   --input: #262b44;
   --ring: #f4b41a;
-  --chart-1: #f4b41a;
-  --chart-2: #41a6f6;
-  --chart-3: #38b764;
-  --chart-4: #b13e53;
-  --chart-5: #a7f070;
-  --sidebar: #262b44;
-  --sidebar-foreground: #f4f4f4;
-  --sidebar-primary: #f4b41a;
-  --sidebar-primary-foreground: #1a1c2c;
-  --sidebar-accent: #3b5dc9;
-  --sidebar-accent-foreground: #f4f4f4;
-  --sidebar-border: #566c86;
-  --sidebar-ring: #f4b41a;
+  
+  /* Fonts */
+  --font-primary: 'Press Start 2P', 'Courier New', monospace;
+  --font-secondary: 'Courier New', monospace;
+  --font-size-xs: 6px;
+  --font-size-sm: 8px;
+  --font-size-base: 10px;
+  --font-size-lg: 12px;
+  --font-size-xl: 14px;
+  
+  /* Border width */
+  --border-width: 4px;
+  
+  /* Pixel art colors */
+  --pixel-gold: #f4b41a;
+  --pixel-gold-light: #ffe05a;
+  --pixel-gold-dark: #c7941a;
+  --pixel-grass: #38b764;
+  --pixel-grass-light: #a7f070;
+  --pixel-grass-dark: #2d7a46;
+  --pixel-blood: #b13e53;
+  --pixel-blood-light: #e07070;
+  --pixel-sky: #41a6f6;
+  --pixel-sky-light: #74c0fc;
+  --pixel-sky-dark: #1971c2;
+  --pixel-magic: #8b5cf6;
+  --pixel-magic-light: #a78bfa;
+  --pixel-wood: #8b5a2b;
+  --pixel-stone: #6b7280;
+  --pixel-border-light: #5a6988;
+  --pixel-border-dark: #1a1c2c;
+  --pixel-highlight: #f4f4f4;
+  --pixel-shadow: #0d0e14;
+  
+  /* Aspect colors */
+  --aspect-personal: #06b6d4;
+  --aspect-career: #41a6f6;
+  --aspect-finance: #f4b41a;
+  --aspect-physical: #38b764;
+  --aspect-mental: #f472b6;
+  --aspect-social: #f97316;
+  --aspect-spiritual: #a855f7;
+  --aspect-intellectual: #3b82f6;
+  --aspect-recreation: #ec4899;
+  --aspect-environment: #22c55e;
+  
+  /* Rarity colors */
+  --rarity-common: #94a3b8;
+  --rarity-common-bg: #334155;
+  --rarity-uncommon: #38b764;
+  --rarity-uncommon-bg: #1a3a2a;
+  --rarity-rare: #41a6f6;
+  --rarity-rare-bg: #1a2a4a;
+  --rarity-epic: #8b5cf6;
+  --rarity-epic-bg: #2a1a4a;
+  --rarity-legendary: #f4b41a;
+  --rarity-legendary-bg: #3a2a1a;
+  
+  /* Shadows */
+  --shadow-none: none;
+  --shadow-pixel: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 10px var(--pixel-gold);
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-hard: 6px 6px 0 rgba(0, 0, 0, 0.6);
+  
+  /* Component defaults */
+  --btn-padding: 8px 16px;
+  --btn-font-size: 10px;
+  --btn-letter-spacing: 1px;
+  --panel-padding: 16px;
+  --progress-height: 16px;
+}
+
+.dark {
+  /* Same as root - all dark theme */
 }
 
 @layer base {
@@ -158,7 +167,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-primary);
     image-rendering: pixelated;
     image-rendering: crisp-edges;
   }
@@ -170,17 +179,17 @@
 
 /* Pixel Border - Classic 3D beveled look */
 .pixel-border {
-  border: 4px solid;
+  border: var(--border-width) solid;
   border-color: var(--pixel-border-light) var(--pixel-border-dark) var(--pixel-border-dark) var(--pixel-border-light);
   box-shadow: 
     inset 2px 2px 0 rgba(255, 255, 255, 0.1),
     inset -2px -2px 0 rgba(0, 0, 0, 0.3),
-    4px 4px 0 rgba(0, 0, 0, 0.5);
+    var(--shadow-pixel);
 }
 
 /* Pixel Border Inverted (for pressed/inset) */
 .pixel-border-inset {
-  border: 4px solid;
+  border: var(--border-width) solid;
   border-color: var(--pixel-border-dark) var(--pixel-border-light) var(--pixel-border-light) var(--pixel-border-dark);
   box-shadow: 
     inset 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -188,18 +197,18 @@
 
 /* Pixel Button */
 .pixel-btn {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  padding: 8px 16px;
-  border: 4px solid;
+  font-family: var(--font-primary);
+  font-size: var(--btn-font-size);
+  padding: var(--btn-padding);
+  letter-spacing: var(--btn-letter-spacing);
+  border: var(--border-width) solid;
   border-color: var(--pixel-border-light) var(--pixel-border-dark) var(--pixel-border-dark) var(--pixel-border-light);
   background: var(--card);
   color: var(--foreground);
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1px;
   transition: none;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-pixel);
 }
 
 .pixel-btn:hover {
@@ -230,22 +239,19 @@
 
 /* Pixel Panel */
 .pixel-panel {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-primary);
   background: var(--card);
-  border: 4px solid;
+  border: var(--border-width) solid;
   border-color: var(--pixel-border-light) var(--pixel-border-dark) var(--pixel-border-dark) var(--pixel-border-light);
-  box-shadow: 
-    inset 2px 2px 0 rgba(255, 255, 255, 0.05),
-    inset -2px -2px 0 rgba(0, 0, 0, 0.2),
-    6px 6px 0 rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow-hard);
 }
 
 /* Pixel Panel Header */
 .pixel-panel-header {
   background: linear-gradient(180deg, var(--secondary) 0%, #2a4494 100%);
-  border-bottom: 4px solid var(--pixel-border-dark);
+  border-bottom: var(--border-width) solid var(--pixel-border-dark);
   padding: 8px 12px;
-  font-size: 10px;
+  font-size: 8px;
   color: white;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
   display: flex;
@@ -255,11 +261,11 @@
 
 /* Pixel Input */
 .pixel-input {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+  font-family: var(--font-primary);
+  font-size: var(--btn-font-size);
   padding: 8px 12px;
   background: var(--background);
-  border: 4px solid;
+  border: var(--border-width) solid;
   border-color: var(--pixel-border-dark) var(--pixel-border-light) var(--pixel-border-light) var(--pixel-border-dark);
   color: var(--foreground);
   box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -275,11 +281,11 @@
 
 /* Pixel Select */
 .pixel-select {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+  font-family: var(--font-primary);
+  font-size: var(--btn-font-size);
   padding: 8px 24px 8px 12px;
   background: var(--background);
-  border: 4px solid;
+  border: var(--border-width) solid;
   border-color: var(--pixel-border-dark) var(--pixel-border-light) var(--pixel-border-light) var(--pixel-border-dark);
   color: var(--foreground);
   cursor: pointer;
@@ -291,7 +297,7 @@
 
 /* Pixel Progress Bar */
 .pixel-progress {
-  height: 16px;
+  height: var(--progress-height);
   background: var(--background);
   border: 3px solid;
   border-color: var(--pixel-border-dark) var(--pixel-border-light) var(--pixel-border-light) var(--pixel-border-dark);
@@ -348,19 +354,19 @@
 
 /* Pixel Tooltip */
 .pixel-tooltip {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-primary);
   font-size: 8px;
   padding: 8px 12px;
   background: var(--card);
   border: 3px solid var(--pixel-gold);
   color: var(--foreground);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-pixel);
   z-index: 9999;
 }
 
 /* Pixel Badge/Tag */
 .pixel-badge {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-primary);
   font-size: 8px;
   padding: 4px 8px;
   background: var(--secondary);
@@ -396,12 +402,12 @@
 
 /* Game Canvas Container */
 .game-container {
-  background: #0d1117;
+  background: var(--background);
   border: 6px solid;
   border-color: var(--pixel-border-light) var(--pixel-border-dark) var(--pixel-border-dark) var(--pixel-border-light);
   box-shadow: 
     inset 0 0 60px rgba(0, 0, 0, 0.5),
-    8px 8px 0 rgba(0, 0, 0, 0.7);
+    var(--shadow-hard);
 }
 
 /* Pixel Grid Overlay */
@@ -414,14 +420,14 @@
 
 /* Pixel Dialogue Box */
 .pixel-dialogue {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-primary);
   background: var(--card);
   border: 6px solid;
   border-color: var(--pixel-border-light) var(--pixel-border-dark) var(--pixel-border-dark) var(--pixel-border-light);
   padding: 16px;
   margin: 16px;
   min-height: 80px;
-  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-pixel);
 }
 
 .pixel-dialogue-name {
@@ -466,18 +472,18 @@
   background: rgba(26, 28, 44, 0.9);
   border: 4px solid;
   border-color: var(--pixel-border-light) var(--pixel-border-dark) var(--pixel-border-dark) var(--pixel-border-light);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-pixel);
 }
 
 /* Pixel Notification */
 .pixel-notification {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-primary);
   font-size: 8px;
   padding: 8px 16px;
   background: var(--card);
   border: 3px solid var(--pixel-gold);
   color: var(--foreground);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-pixel);
   animation: pixel-bounce 0.5s ease-out;
 }
 
@@ -621,35 +627,35 @@
 }
 
 /* ==========================================
-   PIXEL ART RARITY COLORS
+   RARITY COLORS (Dynamic from CSS vars)
    ========================================== */
 
-.rarity-common { color: #94a3b8; }
-.rarity-uncommon { color: #38b764; }
-.rarity-rare { color: #41a6f6; }
-.rarity-epic { color: #8b5cf6; }
-.rarity-legendary { color: #f4b41a; }
+.rarity-common { color: var(--rarity-common); }
+.rarity-uncommon { color: var(--rarity-uncommon); }
+.rarity-rare { color: var(--rarity-rare); }
+.rarity-epic { color: var(--rarity-epic); }
+.rarity-legendary { color: var(--rarity-legendary); }
 
-.rarity-common-bg { background: #94a3b8; }
-.rarity-uncommon-bg { background: #38b764; }
-.rarity-rare-bg { background: #41a6f6; }
-.rarity-epic-bg { background: #8b5cf6; }
-.rarity-legendary-bg { background: #f4b41a; }
+.rarity-common-bg { background: var(--rarity-common-bg); }
+.rarity-uncommon-bg { background: var(--rarity-uncommon-bg); }
+.rarity-rare-bg { background: var(--rarity-rare-bg); }
+.rarity-epic-bg { background: var(--rarity-epic-bg); }
+.rarity-legendary-bg { background: var(--rarity-legendary-bg); }
 
 /* ==========================================
-   PIXEL ART CATEGORY COLORS
+   ASPECT COLORS (Dynamic from CSS vars)
    ========================================== */
 
-.category-career { --cat-color: #f4b41a; }
-.category-finance { --cat-color: #38b764; }
-.category-physical { --cat-color: #ef4444; }
-.category-mental { --cat-color: #8b5cf6; }
-.category-social { --cat-color: #ec4899; }
-.category-spiritual { --cat-color: #a855f7; }
-.category-intellectual { --cat-color: #3b82f6; }
-.category-recreation { --cat-color: #f97316; }
-.category-environment { --cat-color: #22c55e; }
-.category-personal { --cat-color: #06b6d4; }
+.aspect-personal { --aspect-color: var(--aspect-personal); }
+.aspect-career { --aspect-color: var(--aspect-career); }
+.aspect-finance { --aspect-color: var(--aspect-finance); }
+.aspect-physical { --aspect-color: var(--aspect-physical); }
+.aspect-mental { --aspect-color: var(--aspect-mental); }
+.aspect-social { --aspect-color: var(--aspect-social); }
+.aspect-spiritual { --aspect-color: var(--aspect-spiritual); }
+.aspect-intellectual { --aspect-color: var(--aspect-intellectual); }
+.aspect-recreation { --aspect-color: var(--aspect-recreation); }
+.aspect-environment { --aspect-color: var(--aspect-environment); }
 
 /* ==========================================
    SELECTION STYLING
@@ -705,7 +711,7 @@
    ========================================== */
 
 .pixel-font {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-family: var(--font-primary);
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
@@ -716,15 +722,28 @@
 }
 
 .pixel-text {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
   line-height: 1.8;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.pixel-text-xs { font-size: 6px; }
-.pixel-text-sm { font-size: 8px; }
-.pixel-text-base { font-size: 10px; }
-.pixel-text-lg { font-size: 12px; }
-.pixel-text-xl { font-size: 14px; }
+.pixel-text-xs { font-size: var(--font-size-xs); }
+.pixel-text-sm { font-size: var(--font-size-sm); }
+.pixel-text-base { font-size: var(--font-size-base); }
+.pixel-text-lg { font-size: var(--font-size-lg); }
+.pixel-text-xl { font-size: var(--font-size-xl); }
+
+/* ==========================================
+   DYNAMIC THEME SUPPORT
+   ========================================== */
+
+/* Use CSS variables for all colors to support dynamic theming */
+.theme-dynamic {
+  --dynamic-bg: var(--background);
+  --dynamic-fg: var(--foreground);
+  --dynamic-primary: var(--primary);
+  --dynamic-secondary: var(--secondary);
+  --dynamic-accent: var(--accent);
+}

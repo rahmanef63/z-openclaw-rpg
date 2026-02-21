@@ -1,0 +1,136 @@
+{
+  "id": "super-space-default",
+  "name": "Super Space RPG",
+  "version": "1.0.0",
+  
+  "grid": {
+    "width": 20,
+    "height": 20,
+    "tileSize": 32,
+    "showGrid": true,
+    "gridColor": "#566c86",
+    "gridOpacity": 0.3
+  },
+  
+  "camera": {
+    "followPlayer": true,
+    "smoothing": 0.1,
+    "zoom": {
+      "min": 0.5,
+      "max": 2.0,
+      "default": 1.0
+    },
+    "bounds": {
+      "enabled": true,
+      "padding": 2
+    }
+  },
+  
+  "player": {
+    "startGridX": 5,
+    "startGridY": 5,
+    "walkSpeed": 4,
+    "runSpeed": 8,
+    "animationSpeed": 8,
+    "spriteSheet": "/assets/characters/player.svg",
+    "frameCount": {
+      "idle": 1,
+      "walk": 4,
+      "run": 4
+    }
+  },
+  
+  "npc": {
+    "defaultSpeed": 2,
+    "wanderEnabled": true,
+    "wanderInterval": 5000,
+    "wanderRange": 3,
+    "interactionDistance": 2
+  },
+  
+  "time": {
+    "syncWithRealTime": true,
+    "dayDuration": 1440,
+    "phases": {
+      "morning": {
+        "start": 5,
+        "end": 12,
+        "ambientColor": "#ffeaa7"
+      },
+      "afternoon": {
+        "start": 12,
+        "end": 17,
+        "ambientColor": "#ffffff"
+      },
+      "evening": {
+        "start": 17,
+        "end": 21,
+        "ambientColor": "#fab1a0"
+      },
+      "night": {
+        "start": 21,
+        "end": 5,
+        "ambientColor": "#74b9ff"
+      }
+    },
+    "format": "24h"
+  },
+  
+  "ui": {
+    "showMinimap": true,
+    "showFPS": false,
+    "showControls": true,
+    "showCoordinates": true,
+    "minimapScale": 3,
+    "minimapPosition": "bottom-right",
+    "controlsPosition": "bottom-left"
+  },
+  
+  "audio": {
+    "enabled": true,
+    "musicVolume": 0.5,
+    "sfxVolume": 0.7,
+    "ambientVolume": 0.3,
+    "sounds": {
+      "footstep": "/sounds/footstep.mp3",
+      "interact": "/sounds/interact.mp3",
+      "place": "/sounds/place.mp3",
+      "error": "/sounds/error.mp3",
+      "notification": "/sounds/notification.mp3",
+      "success": "/sounds/success.mp3"
+    }
+  },
+  
+  "buildMode": {
+    "defaultRotation": 0,
+    "snapToGrid": true,
+    "showPreview": true,
+    "showOverlap": true,
+    "previewOpacity": 0.7,
+    "validColor": "#38b764",
+    "invalidColor": "#b13e53",
+    "rotationStep": 90
+  },
+  
+  "interaction": {
+    "clickToMove": true,
+    "remoteInteraction": true,
+    "interactionRange": 1.5,
+    "interactionCooldown": 500,
+    "showInteractionHints": true
+  },
+  
+  "quest": {
+    "maxActiveQuests": 5,
+    "showNotifications": true,
+    "autoTrackNew": true,
+    "rewardAnimation": true
+  },
+  
+  "save": {
+    "autoSave": true,
+    "autoSaveInterval": 60000,
+    "maxSaves": 5,
+    "storageKey": "super-space-rpg-save"
+  }
+}
