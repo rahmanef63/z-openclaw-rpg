@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <defs>
+    <filter id="smokeBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1"/>
+    </filter>
+    <style>
+      .smoke-particle { fill: #6b7280; filter: url(#smokeBlur); }
+    </style>
+  </defs>
+  
+  <!-- Main smoke cloud -->
+  <ellipse cx="12" cy="12" rx="8" ry="6" class="smoke-particle" opacity="0.6"/>
+  
+  <!-- Secondary particles -->
+  <circle cx="6" cy="10" r="4" class="smoke-particle" opacity="0.4"/>
+  <circle cx="18" cy="8" r="3" class="smoke-particle" opacity="0.5"/>
+  <circle cx="10" cy="6" r="3" class="smoke-particle" opacity="0.3"/>
+  <circle cx="16" cy="14" r="4" class="smoke-particle" opacity="0.4"/>
+</svg>

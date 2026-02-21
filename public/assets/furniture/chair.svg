@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .chair-seat { fill: #475569; }
+      .chair-back { fill: #334155; }
+      .chair-frame { fill: #64748b; }
+      .chair-wheel { fill: #1e293b; }
+    </style>
+  </defs>
+  
+  <!-- Chair back -->
+  <rect x="8" y="4" width="16" height="14" rx="3" class="chair-back"/>
+  <rect x="10" y="6" width="12" height="10" rx="2" fill="#475569"/>
+  
+  <!-- Chair seat -->
+  <ellipse cx="16" cy="20" rx="10" ry="4" class="chair-seat"/>
+  
+  <!-- Chair armrests -->
+  <rect x="4" y="14" width="3" height="6" rx="1" class="chair-frame"/>
+  <rect x="25" y="14" width="3" height="6" rx="1" class="chair-frame"/>
+  
+  <!-- Chair base -->
+  <rect x="14" y="22" width="4" height="4" class="chair-frame"/>
+  
+  <!-- Chair legs -->
+  <line x1="16" y1="26" x2="8" y2="30" stroke="#64748b" stroke-width="2"/>
+  <line x1="16" y1="26" x2="24" y2="30" stroke="#64748b" stroke-width="2"/>
+  <line x1="16" y1="26" x2="16" y2="30" stroke="#64748b" stroke-width="2"/>
+  
+  <!-- Wheels -->
+  <circle cx="8" cy="30" r="2" class="chair-wheel"/>
+  <circle cx="16" cy="30" r="2" class="chair-wheel"/>
+  <circle cx="24" cy="30" r="2" class="chair-wheel"/>
+</svg>

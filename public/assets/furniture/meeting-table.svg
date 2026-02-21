@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 64" width="128" height="64">
+  <defs>
+    <style>
+      .table-top { fill: #475569; }
+      .table-edge { fill: #334155; }
+      .table-leg { fill: #64748b; }
+      .chair-indicator { fill: #1e293b; stroke: #334155; stroke-width: 1; }
+    </style>
+  </defs>
+  
+  <!-- Table top shadow -->
+  <ellipse cx="64" cy="34" rx="58" ry="20" fill="#1e293b" opacity="0.3"/>
+  
+  <!-- Table top -->
+  <ellipse cx="64" cy="32" rx="58" ry="20" class="table-top"/>
+  <ellipse cx="64" cy="32" rx="58" ry="20" class="table-edge" fill="none" stroke="#64748b" stroke-width="2"/>
+  
+  <!-- Table center detail -->
+  <ellipse cx="64" cy="32" rx="40" ry="12" fill="none" stroke="#334155" stroke-width="1" stroke-dasharray="4,4"/>
+  
+  <!-- Chair position indicators (top side) -->
+  <ellipse cx="24" cy="18" rx="8" ry="4" class="chair-indicator"/>
+  <ellipse cx="64" cy="14" rx="8" ry="4" class="chair-indicator"/>
+  <ellipse cx="104" cy="18" rx="8" ry="4" class="chair-indicator"/>
+  
+  <!-- Chair position indicators (bottom side) -->
+  <ellipse cx="24" cy="46" rx="8" ry="4" class="chair-indicator"/>
+  <ellipse cx="64" cy="50" rx="8" ry="4" class="chair-indicator"/>
+  <ellipse cx="104" cy="46" rx="8" ry="4" class="chair-indicator"/>
+  
+  <!-- Table legs -->
+  <rect x="20" y="40" width="6" height="16" rx="1" class="table-leg"/>
+  <rect x="102" y="40" width="6" height="16" rx="1" class="table-leg"/>
+  
+  <!-- Cable management channel -->
+  <rect x="30" y="30" width="68" height="4" rx="1" fill="#334155"/>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" width="64" height="32">
+  <defs>
+    <style>
+      .shelf-frame { fill: #475569; }
+      .shelf-back { fill: #334155; }
+      .book { stroke-width: 0.5; stroke: #1e293b; }
+    </style>
+  </defs>
+  
+  <!-- Shelf frame -->
+  <rect x="0" y="0" width="64" height="32" rx="2" class="shelf-frame"/>
+  
+  <!-- Back panel -->
+  <rect x="2" y="2" width="60" height="28" class="shelf-back"/>
+  
+  <!-- Shelf dividers -->
+  <line x1="2" y1="11" x2="62" y2="11" stroke="#475569" stroke-width="2"/>
+  <line x1="2" y1="21" x2="62" y2="21" stroke="#475569" stroke-width="2"/>
+  
+  <!-- Top shelf - books -->
+  <g class="book">
+    <rect x="5" y="3" width="4" height="7" fill="#ef4444"/>
+    <rect x="10" y="4" width="3" height="6" fill="#22c55e"/>
+    <rect x="14" y="3" width="5" height="7" fill="#3b82f6"/>
+    <rect x="20" y="4" width="3" height="6" fill="#eab308"/>
+    <rect x="24" y="3" width="4" height="7" fill="#8b5cf6"/>
+    <rect x="29" y="4" width="3" height="6" fill="#ec4899"/>
+    <rect x="33" y="3" width="6" height="7" fill="#06b6d4"/>
+    <rect x="40" y="4" width="3" height="6" fill="#f97316"/>
+    <!-- Gap -->
+    <rect x="50" y="4" width="4" height="6" fill="#64748b"/>
+    <rect x="55" y="3" width="5" height="7" fill="#84cc16"/>
+  </g>
+  
+  <!-- Middle shelf - items -->
+  <g>
+    <rect x="5" y="13" width="6" height="7" fill="#64748b" class="book"/> <!-- Box -->
+    <rect x="12" y="14" width="3" height="6" fill="#8b5cf6" class="book"/> <!-- Book -->
+    <!-- Plant -->
+    <ellipse cx="24" cy="19" rx="4" ry="2" fill="#7c3aed"/> <!-- Pot -->
+    <ellipse cx="24" cy="16" rx="3" ry="3" fill="#22c55e"/> <!-- Plant -->
+    <!-- More books -->
+    <rect x="32" y="13" width="4" height="7" fill="#ef4444" class="book"/>
+    <rect x="37" y="14" width="3" height="6" fill="#0ea5e9" class="book"/>
+    <rect x="41" y="13" width="5" height="7" fill="#22c55e" class="book"/>
+    <!-- Trophy -->
+    <path d="M55 20 L55 15 L52 12 L58 12 L55 15 Z" fill="#eab308"/>
+  </g>
+  
+  <!-- Bottom shelf - storage -->
+  <g>
+    <!-- Storage box -->
+    <rect x="5" y="23" width="12" height="7" rx="1" fill="#475569" stroke="#64748b"/>
+    <rect x="9" y="25" width="4" height="3" fill="#334155"/> <!-- Handle -->
+    <!-- Binders -->
+    <rect x="20" y="23" width="3" height="7" fill="#3b82f6" class="book"/>
+    <rect x="24" y="23" width="3" height="7" fill="#22c55e" class="book"/>
+    <rect x="28" y="23" width="3" height="7" fill="#ef4444" class="book"/>
+    <!-- More storage -->
+    <rect x="35" y="23" width="10" height="7" rx="1" fill="#475569" stroke="#64748b"/>
+    <rect x="50" y="23" width="10" height="7" rx="1" fill="#475569" stroke="#64748b"/>
+  </g>
+</svg>

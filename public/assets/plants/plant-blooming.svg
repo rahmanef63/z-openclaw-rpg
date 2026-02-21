@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <filter id="bloomGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .pot { fill: #7c3aed; }
+      .pot-rim { fill: #6d28d9; }
+      .leaf { fill: #10b981; }
+      .leaf-dark { fill: #059669; }
+      .stem { stroke: #047857; stroke-width: 1.5; fill: none; }
+      .flower-cyan { fill: #00ffff; filter: url(#bloomGlow); }
+      .flower-pink { fill: #ff6b9d; filter: url(#bloomGlow); }
+      .flower-center { fill: #fbbf24; }
+      @keyframes bloom-sway {
+        0%, 100% { transform: rotate(-2deg); }
+        50% { transform: rotate(2deg); }
+      }
+      @keyframes flower-pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.9; }
+      }
+      .sway { animation: bloom-sway 2.5s ease-in-out infinite; transform-origin: bottom center; }
+      .bloom { animation: flower-pulse 1.5s ease-in-out infinite; }
+    </style>
+  </defs>
+  
+  <!-- Pot -->
+  <path d="M8 28 L10 32 L22 32 L24 28 Z" class="pot"/>
+  <ellipse cx="16" cy="28" rx="8" ry="2" class="pot-rim"/>
+  
+  <!-- Soil -->
+  <ellipse cx="16" cy="28" rx="6" ry="1.5" fill="#3d2817"/>
+  
+  <!-- Main plant group -->
+  <g class="sway">
+    <!-- Central stem -->
+    <line x1="16" y1="28" x2="16" y2="10" class="stem"/>
+    
+    <!-- Left stem -->
+    <path d="M16 22 Q10 18 6 12" class="stem"/>
+    
+    <!-- Right stem -->
+    <path d="M16 20 Q22 14 26 10" class="stem"/>
+    
+    <!-- Leaves -->
+    <ellipse cx="16" cy="12" rx="3" ry="4" class="leaf"/>
+    <ellipse cx="5" cy="12" rx="4" ry="2" class="leaf" transform="rotate(-50 5 12)"/>
+    <ellipse cx="27" cy="10" rx="4" ry="2" class="leaf" transform="rotate(50 27 10)"/>
+    <ellipse cx="12" cy="20" rx="3" ry="2" class="leaf-dark" transform="rotate(-25 12 20)"/>
+    <ellipse cx="20" cy="18" rx="3" ry="2" class="leaf" transform="rotate(25 20 18)"/>
+    
+    <!-- Cyan flower (top) -->
+    <g class="bloom" transform="translate(16, 6)">
+      <ellipse cx="0" cy="-3" rx="2" ry="3" class="flower-cyan"/>
+      <ellipse cx="3" cy="0" rx="2" ry="3" class="flower-cyan" transform="rotate(72)"/>
+      <ellipse cx="0" cy="3" rx="2" ry="3" class="flower-cyan" transform="rotate(144)"/>
+      <ellipse cx="-3" cy="0" rx="2" ry="3" class="flower-cyan" transform="rotate(216)"/>
+      <ellipse cx="-2" cy="-2" rx="2" ry="3" class="flower-cyan" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="2" class="flower-center"/>
+    </g>
+    
+    <!-- Pink flower (left) -->
+    <g class="bloom" style="animation-delay: 0.5s" transform="translate(6, 10)">
+      <ellipse cx="0" cy="-2" rx="1.5" ry="2.5" class="flower-pink"/>
+      <ellipse cx="2" cy="0" rx="1.5" ry="2.5" class="flower-pink" transform="rotate(72)"/>
+      <ellipse cx="0" cy="2" rx="1.5" ry="2.5" class="flower-pink" transform="rotate(144)"/>
+      <ellipse cx="-2" cy="0" rx="1.5" ry="2.5" class="flower-pink" transform="rotate(216)"/>
+      <ellipse cx="-1.5" cy="-1.5" rx="1.5" ry="2.5" class="flower-pink" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="1.5" class="flower-center"/>
+    </g>
+    
+    <!-- Pink flower (right) -->
+    <g class="bloom" style="animation-delay: 0.3s" transform="translate(26, 8)">
+      <ellipse cx="0" cy="-2" rx="1.5" ry="2.5" class="flower-pink"/>
+      <ellipse cx="2" cy="0" rx="1.5" ry="2.5" class="flower-pink" transform="rotate(72)"/>
+      <ellipse cx="0" cy="2" rx="1.5" ry="2.5" class="flower-pink" transform="rotate(144)"/>
+      <ellipse cx="-2" cy="0" rx="1.5" ry="2.5" class="flower-pink" transform="rotate(216)"/>
+      <ellipse cx="-1.5" cy="-1.5" rx="1.5" ry="2.5" class="flower-pink" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="1.5" class="flower-center"/>
+    </g>
+    
+    <!-- Sparkles -->
+    <circle cx="12" cy="4" r="1" fill="#00ffff" opacity="0.7" class="bloom"/>
+    <circle cx="20" cy="5" r="0.8" fill="#ff6b9d" opacity="0.7" class="bloom" style="animation-delay: 0.7s"/>
+  </g>
+  
+  <!-- Very happy face on pot -->
+  <circle cx="13" cy="30" r="0.8" fill="#4c1d95"/>
+  <circle cx="19" cy="30" r="0.8" fill="#4c1d95"/>
+  <path d="M12 31 Q16 33.5 20 31" stroke="#4c1d95" stroke-width="0.8" fill="none"/>
+  <ellipse cx="12" cy="29.5" rx="1" ry="0.5" fill="#a78bfa" opacity="0.5"/> <!-- Blush -->
+  <ellipse cx="20" cy="29.5" rx="1" ry="0.5" fill="#a78bfa" opacity="0.5"/> <!-- Blush -->
+</svg>

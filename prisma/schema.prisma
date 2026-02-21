@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AssetTemplate {
+  id              String  @id @default(cuid())
+  key             String  @unique
+  type            String  // 'furniture', 'npc', 'floor', 'wall'
+  canCollide      Boolean @default(false)
+  interactionType String? // 'open_window', 'display_data', 'none'
+  linkedMetric    String? // 'tasks', 'sales', 'health', 'server_status'
+  displayName     String?
+}
+
+model WorldObject {
+  id           String @id @default(cuid())
+  sceneId      String @default("workspace")
+  templateKey  String
+  gridX        Int
+  gridY        Int
+  visualState  String @default("healthy") // 'healthy', 'warning', 'critical', 'blooming'
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model PlayerState {
+  id            String  @id @default(cuid())
+  userId        String  @unique @default("default_user")
+  currentScene  String  @default("workspace")
+  gridX         Int     @default(10)
+  gridY         Int     @default(10)
+  onlineStatus  String  @default("active") // 'active', 'away', 'busy'
+  tasksCompleted Int    @default(0)
+  salesAmount   Float   @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model BusinessMetric {
+  id          String   @id @default(cuid())
+  metricName  String   // 'tasks', 'sales', 'server_health', 'productivity'
+  value       Float
+  status      String   // 'healthy', 'warning', 'critical'
+  timestamp   DateTime @default(now())
+}
+
+model ChatMessage {
+  id          String   @id @default(cuid())
+  senderType  String   // 'player', 'npc', 'system'
+  senderName  String
+  message     String
+  sceneId     String   @default("workspace")
+  timestamp   DateTime @default(now())
+}

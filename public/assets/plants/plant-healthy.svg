@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .pot { fill: #7c3aed; }
+      .pot-rim { fill: #6d28d9; }
+      .leaf { fill: #22c55e; }
+      .leaf-dark { fill: #16a34a; }
+      .stem { stroke: #15803d; stroke-width: 1.5; fill: none; }
+      @keyframes gentle-sway {
+        0%, 100% { transform: rotate(-1deg); }
+        50% { transform: rotate(1deg); }
+      }
+      .sway { animation: gentle-sway 3s ease-in-out infinite; transform-origin: bottom center; }
+    </style>
+  </defs>
+  
+  <!-- Pot -->
+  <path d="M8 28 L10 32 L22 32 L24 28 Z" class="pot"/>
+  <ellipse cx="16" cy="28" rx="8" ry="2" class="pot-rim"/>
+  
+  <!-- Soil -->
+  <ellipse cx="16" cy="28" rx="6" ry="1.5" fill="#3d2817"/>
+  
+  <!-- Main plant group with sway animation -->
+  <g class="sway">
+    <!-- Central stem -->
+    <line x1="16" y1="28" x2="16" y2="14" class="stem"/>
+    
+    <!-- Left stem -->
+    <path d="M16 22 Q12 18 8 16" class="stem"/>
+    
+    <!-- Right stem -->
+    <path d="M16 20 Q20 16 24 14" class="stem"/>
+    
+    <!-- Leaves -->
+    <!-- Center top leaf -->
+    <ellipse cx="16" cy="12" rx="3" ry="5" class="leaf"/>
+    <line x1="16" y1="8" x2="16" y2="16" stroke="#16a34a" stroke-width="0.5"/>
+    
+    <!-- Left leaves -->
+    <ellipse cx="7" cy="14" rx="4" ry="2.5" class="leaf" transform="rotate(-45 7 14)"/>
+    <ellipse cx="10" cy="10" rx="3" ry="2" class="leaf-dark" transform="rotate(-60 10 10)"/>
+    
+    <!-- Right leaves -->
+    <ellipse cx="25" cy="12" rx="4" ry="2.5" class="leaf" transform="rotate(45 25 12)"/>
+    <ellipse cx="22" cy="8" rx="3" ry="2" class="leaf-dark" transform="rotate(60 22 8)"/>
+    
+    <!-- Bottom leaves -->
+    <ellipse cx="12" cy="20" rx="3" ry="2" class="leaf-dark" transform="rotate(-30 12 20)"/>
+    <ellipse cx="20" cy="18" rx="3" ry="2" class="leaf" transform="rotate(20 20 18)"/>
+  </g>
+  
+  <!-- Happy face on pot -->
+  <circle cx="13" cy="30" r="0.8" fill="#4c1d95"/>
+  <circle cx="19" cy="30" r="0.8" fill="#4c1d95"/>
+  <path d="M13 31 Q16 32.5 19 31" stroke="#4c1d95" stroke-width="0.8" fill="none"/>
+</svg>

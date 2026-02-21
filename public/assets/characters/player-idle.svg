@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <filter id="playerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .player-body { fill: #00ffff; filter: url(#playerGlow); }
+      .player-eye { fill: #0f172a; }
+      @keyframes idle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-1px); }
+      }
+      .idle-anim { animation: idle 1.5s ease-in-out infinite; }
+    </style>
+  </defs>
+  
+  <g class="idle-anim">
+    <rect x="6" y="6" width="20" height="20" rx="4" ry="4" class="player-body"/>
+    <circle cx="12" cy="14" r="2" class="player-eye"/>
+    <circle cx="20" cy="14" r="2" class="player-eye"/>
+    <line x1="10" y1="20" x2="22" y2="20" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>
