@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useGameStore } from '@/stores/gameStore';
 import { useBuildStore } from '@/stores';
-import { COLORS, MAP_WIDTH, MAP_HEIGHT } from '@/features/engine/constants';
+import { MAP_WIDTH, MAP_HEIGHT } from '@/features/engine/constants';
 import { CheckCircle, DollarSign, Bot, Minimize2, Maximize2, Footprints, Zap } from 'lucide-react';
 
 export default function HUD() {
@@ -39,20 +39,13 @@ export default function HUD() {
   
   const tasksCompleted = metrics.find(m => m.metricName === 'tasks_completed')?.value || 0;
   const salesToday = metrics.find(m => m.metricName === 'sales_today')?.value || 0;
-  const serverHealth = metrics.find(m => m.metricName === 'server_health')?.status || 'healthy';
 
   // Build mode - show only minimap
   if (isBuildMode) {
     return (
       <div className="absolute inset-0 pointer-events-none z-40">
         <div
-          className={`absolute pointer-events-auto ${isMobile ? 'bottom-16 right-2' : 'bottom-4 right-4'}`}
-          style={{
-            backgroundColor: COLORS.glass,
-            border: `1px solid #eab308`,
-            borderRadius: 8,
-            backdropFilter: 'blur(10px)',
-          }}
+          className={`absolute pointer-events-auto ${isMobile ? 'bottom-16 right-2' : 'bottom-4 right-4'} pixel-minimap`}
         >
           <MiniMap playerGridPos={playerGridPos} npcs={npcs} isRunning={isRunning} isMobile={isMobile} />
         </div>
@@ -64,52 +57,43 @@ export default function HUD() {
     <div className="absolute inset-0 pointer-events-none z-40">
       {/* Desktop: Bottom Left - Controls Panel */}
       {!isMobile && !isTablet && showControls && (
-        <div
-          className="absolute bottom-4 left-48 pointer-events-auto"
-          style={{
-            backgroundColor: COLORS.glass,
-            border: `1px solid ${COLORS.border}`,
-            borderRadius: 8,
-            backdropFilter: 'blur(10px)',
-          }}
-        >
-          <div className="p-2 space-y-1">
-            <div className="flex items-center justify-between mb-1">
-              <div className="text-[10px] font-mono" style={{ color: COLORS.accent }}>Controls</div>
+        <div className="absolute bottom-4 left-48 pointer-events-auto pixel-panel p-3">
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between mb-2 pb-2 border-b-2" style={{ borderColor: 'var(--pixel-border-dark)' }}>
+              <div className="pixel-text text-[var(--pixel-gold)]">Controls</div>
               <button
                 onClick={() => setShowControls(false)}
-                className="p-0.5 rounded hover:bg-slate-700"
+                className="pixel-btn p-1"
               >
-                <Minimize2 size={10} style={{ color: '#64748b' }} />
+                <Minimize2 size={10} style={{ color: 'var(--pixel-border-light)' }} />
               </button>
             </div>
-            <div className="text-[10px]" style={{ color: COLORS.textMuted }}>
+            <div className="pixel-text-xs" style={{ color: 'var(--muted-foreground)' }}>
               <span className="inline-block w-14">Move:</span>
-              <span style={{ color: COLORS.text }}>WASD / Arrows</span>
+              <span className="text-[var(--foreground)]">WASD / Arrows</span>
             </div>
-            <div className="text-[10px]" style={{ color: COLORS.textMuted }}>
+            <div className="pixel-text-xs" style={{ color: 'var(--muted-foreground)' }}>
               <span className="inline-block w-14">Run:</span>
-              <span style={{ color: COLORS.text }}>SHIFT ⚡</span>
+              <span className="text-[var(--foreground)]">SHIFT ⚡</span>
             </div>
-            <div className="text-[10px]" style={{ color: COLORS.textMuted }}>
+            <div className="pixel-text-xs" style={{ color: 'var(--muted-foreground)' }}>
               <span className="inline-block w-14">Interact:</span>
-              <span style={{ color: COLORS.text }}>E / Click</span>
+              <span className="text-[var(--foreground)]">E / Click</span>
             </div>
-            <div className="text-[10px]" style={{ color: COLORS.textMuted }}>
+            <div className="pixel-text-xs" style={{ color: 'var(--muted-foreground)' }}>
               <span className="inline-block w-14">Build:</span>
-              <span style={{ color: COLORS.text }}>B</span>
+              <span className="text-[var(--foreground)]">B</span>
             </div>
             
             {/* Player State */}
-            <div className="mt-2 flex items-center gap-2">
-              <span className="text-[10px]" style={{ color: COLORS.textMuted }}>State:</span>
+            <div className="mt-3 flex items-center gap-2 pt-2 border-t-2" style={{ borderColor: 'var(--pixel-border-dark)' }}>
+              <span className="pixel-text-xs" style={{ color: 'var(--muted-foreground)' }}>State:</span>
               <div
-                className="flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono"
+                className="flex items-center gap-1.5 px-2 py-1 pixel-border-inset pixel-text-xs"
                 style={{
-                  backgroundColor: playerState === 'running' ? COLORS.accent + '20' : 
-                                  playerState === 'walking' ? COLORS.healthy + '20' : COLORS.border,
-                  color: playerState === 'running' ? COLORS.accent : 
-                         playerState === 'walking' ? COLORS.healthy : COLORS.textMuted,
+                  backgroundColor: playerState === 'running' ? 'var(--pixel-gold)' : 
+                                  playerState === 'walking' ? 'var(--pixel-grass)' : 'var(--muted)',
+                  color: 'var(--pixel-border-dark)',
                 }}
               >
                 {playerState === 'running' ? <Zap size={10} /> : 
@@ -125,58 +109,46 @@ export default function HUD() {
       {!isMobile && !isTablet && !showControls && (
         <button
           onClick={() => setShowControls(true)}
-          className="absolute bottom-4 left-48 p-2 rounded-lg pointer-events-auto"
-          style={{
-            backgroundColor: COLORS.glass,
-            border: `1px solid ${COLORS.border}`,
-          }}
+          className="absolute bottom-4 left-48 p-2 pointer-events-auto pixel-btn"
         >
-          <Maximize2 size={14} style={{ color: COLORS.accent }} />
+          <Maximize2 size={14} style={{ color: 'var(--pixel-gold)' }} />
         </button>
       )}
       
       {/* Desktop: Top Right - Productivity Stats */}
       {!isMobile && !isTablet && (
-        <div
-          className="absolute top-14 right-44 w-40 pointer-events-auto"
-          style={{
-            backgroundColor: COLORS.glass,
-            border: `1px solid ${COLORS.border}`,
-            borderRadius: 8,
-            backdropFilter: 'blur(10px)',
-          }}
-        >
-          <div className="p-2 space-y-1.5">
-            <div className="text-[10px] font-mono" style={{ color: COLORS.accent }}>
-              Productivity
+        <div className="absolute top-14 right-44 w-44 pointer-events-auto pixel-panel p-3">
+          <div className="space-y-2">
+            <div className="pixel-panel-header -m-3 mb-3">
+              <span className="pixel-text-xs">Productivity</span>
             </div>
             
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle size={12} style={{ color: COLORS.healthy }} />
-                <span className="text-[10px]" style={{ color: COLORS.textMuted }}>Tasks</span>
+            <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center gap-2">
+                <CheckCircle size={14} style={{ color: 'var(--pixel-grass)' }} />
+                <span className="pixel-text-xs" style={{ color: 'var(--muted-foreground)' }}>Tasks</span>
               </div>
-              <span className="text-xs font-mono" style={{ color: COLORS.text }}>
+              <span className="pixel-text text-[var(--pixel-gold)]">
                 {tasksCompleted}
               </span>
             </div>
             
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <DollarSign size={12} style={{ color: COLORS.accent }} />
-                <span className="text-[10px]" style={{ color: COLORS.textMuted }}>Sales</span>
+              <div className="flex items-center gap-2">
+                <DollarSign size={14} style={{ color: 'var(--pixel-gold)' }} />
+                <span className="pixel-text-xs" style={{ color: 'var(--muted-foreground)' }}>Sales</span>
               </div>
-              <span className="text-xs font-mono" style={{ color: COLORS.text }}>
+              <span className="pixel-text text-[var(--pixel-gold)]">
                 ${salesToday}
               </span>
             </div>
             
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <Bot size={12} style={{ color: COLORS.npc }} />
-                <span className="text-[10px]" style={{ color: COLORS.textMuted }}>Agents</span>
+              <div className="flex items-center gap-2">
+                <Bot size={14} style={{ color: 'var(--pixel-magic)' }} />
+                <span className="pixel-text-xs" style={{ color: 'var(--muted-foreground)' }}>Agents</span>
               </div>
-              <span className="text-xs font-mono" style={{ color: COLORS.text }}>
+              <span className="pixel-text text-[var(--pixel-gold)]">
                 {npcs.length}
               </span>
             </div>
@@ -186,13 +158,7 @@ export default function HUD() {
       
       {/* Minimap - Bottom Right */}
       <div
-        className={`absolute pointer-events-auto ${isMobile ? 'bottom-16 right-2' : 'bottom-4 right-4'}`}
-        style={{
-          backgroundColor: COLORS.glass,
-          border: `1px solid ${COLORS.border}`,
-          borderRadius: 8,
-          backdropFilter: 'blur(10px)',
-        }}
+        className={`absolute pointer-events-auto ${isMobile ? 'bottom-16 right-2' : 'bottom-4 right-4'} pixel-minimap`}
       >
         <MiniMap playerGridPos={playerGridPos} npcs={npcs} isRunning={isRunning} isMobile={isMobile} />
       </div>
@@ -203,25 +169,21 @@ export default function HUD() {
           {notifications.map(notif => (
             <div
               key={notif.id}
-              className="px-3 py-2 rounded-lg flex items-center gap-2 animate-pulse"
-              style={{
-                backgroundColor: COLORS.glass,
-                border: `1px solid ${
-                  notif.type === 'critical' ? COLORS.critical :
-                  notif.type === 'warning' ? COLORS.warning : COLORS.accent
-                }`,
-                backdropFilter: 'blur(10px)',
-              }}
+              className="px-4 py-2 flex items-center gap-2 pixel-panel animate-pulse"
             >
               <div
-                className="w-2 h-2 rounded-full"
+                className="w-3 h-3"
                 style={{
                   backgroundColor: 
-                    notif.type === 'critical' ? COLORS.critical :
-                    notif.type === 'warning' ? COLORS.warning : COLORS.accent,
+                    notif.type === 'critical' ? 'var(--pixel-blood)' :
+                    notif.type === 'warning' ? 'var(--pixel-gold)' : 'var(--pixel-grass)',
+                  boxShadow: `0 0 4px ${
+                    notif.type === 'critical' ? 'var(--pixel-blood)' :
+                    notif.type === 'warning' ? 'var(--pixel-gold)' : 'var(--pixel-grass)'
+                  }`,
                 }}
               />
-              <span className="text-xs" style={{ color: COLORS.text }}>
+              <span className="pixel-text-xs text-[var(--foreground)]">
                 {notif.message}
               </span>
             </div>
@@ -243,61 +205,86 @@ function MiniMap({ playerGridPos, npcs, isRunning, isMobile }: {
   
   return (
     <div className="p-1">
+      <div className="pixel-text-xs text-center mb-1 text-[var(--pixel-gold)] pixel-text-shadow">MAP</div>
       <div
-        className="relative"
+        className="relative pixel-border-inset"
         style={{
           width: MAP_WIDTH * mapScale,
           height: MAP_HEIGHT * mapScale,
-          backgroundColor: COLORS.background,
-          borderRadius: 4,
+          backgroundColor: 'var(--background)',
         }}
       >
-        {/* Player position */}
-        <div
-          className="absolute w-1.5 h-1.5 rounded-full animate-pulse"
+        {/* Grid pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-20"
           style={{
-            left: playerGridPos.gridX * mapScale - 1,
-            top: playerGridPos.gridY * mapScale - 1,
-            backgroundColor: isRunning ? COLORS.accent : COLORS.player,
-            boxShadow: `0 0 4px ${isRunning ? COLORS.accent : COLORS.player}`,
+            backgroundImage: `
+              linear-gradient(var(--pixel-border-light) 1px, transparent 1px),
+              linear-gradient(90deg, var(--pixel-border-light) 1px, transparent 1px)
+            `,
+            backgroundSize: `${mapScale * 2}px ${mapScale * 2}px`,
+          }}
+        />
+        
+        {/* Player position - pixel art style */}
+        <div
+          className="absolute"
+          style={{
+            left: playerGridPos.gridX * mapScale - 2,
+            top: playerGridPos.gridY * mapScale - 2,
+            width: 4,
+            height: 4,
+            backgroundColor: isRunning ? 'var(--pixel-gold)' : 'var(--pixel-grass)',
+            boxShadow: isRunning 
+              ? '0 0 4px var(--pixel-gold), inset -1px -1px 0 var(--pixel-gold-dark)'
+              : '0 0 4px var(--pixel-grass), inset -1px -1px 0 rgba(0,0,0,0.3)',
             zIndex: 10,
           }}
         />
         
-        {/* NPCs */}
+        {/* NPCs - pixel dots */}
         {npcs.map(npc => (
           <div
             key={npc.id}
-            className="absolute w-1 h-1 rounded-full"
+            className="absolute"
             style={{
               left: npc.gridX * mapScale,
               top: npc.gridY * mapScale,
-              backgroundColor: COLORS.npc,
+              width: 3,
+              height: 3,
+              backgroundColor: 'var(--pixel-magic)',
+              boxShadow: 'inset -1px -1px 0 rgba(0,0,0,0.3)',
             }}
           />
         ))}
         
-        {/* Key objects */}
+        {/* Key objects - pixel style */}
         <div
-          className="absolute w-1 h-1.5 rounded-sm"
+          className="absolute"
           style={{
             left: 2 * mapScale,
             top: 2 * mapScale,
-            backgroundColor: COLORS.healthy,
+            width: 3,
+            height: 4,
+            backgroundColor: 'var(--pixel-grass)',
+            boxShadow: 'inset -1px -1px 0 rgba(0,0,0,0.3)',
           }}
         />
         <div
-          className="absolute w-1.5 h-1 rounded-sm"
+          className="absolute"
           style={{
             left: 9 * mapScale,
             top: 12 * mapScale,
-            backgroundColor: COLORS.accent,
+            width: 4,
+            height: 3,
+            backgroundColor: 'var(--pixel-gold)',
+            boxShadow: 'inset -1px -1px 0 var(--pixel-gold-dark)',
           }}
         />
       </div>
       
       {!isMobile && (
-        <div className="text-[8px] text-center mt-1 font-mono" style={{ color: COLORS.textMuted }}>
+        <div className="pixel-text-xs text-center mt-1 text-[var(--muted-foreground)]">
           ({playerGridPos.gridX}, {playerGridPos.gridY})
         </div>
       )}

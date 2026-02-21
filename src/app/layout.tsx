@@ -1,29 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Super Space RPG - Spatial Operating System",
-  description: "A gamified business dashboard in a grid-based top-down RPG environment. Manage your workspace, interact with AI agents, and visualize business data in real-time.",
-  keywords: ["RPG", "game", "dashboard", "business", "AI", "Next.js", "TypeScript"],
+  title: "Super Space RPG - Pixel Adventure",
+  description: "A gamified pixel art RPG for managing your life aspects. Build your workspace, interact with NPCs, and level up your life!",
+  keywords: ["RPG", "pixel art", "game", "dashboard", "life management", "Next.js", "TypeScript"],
   authors: [{ name: "Super Space RPG Team" }],
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>",
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect fill='%23f4b41a' width='16' height='16'/><rect fill='%231a1c2c' x='2' y='2' width='4' height='4'/><rect fill='%231a1c2c' x='10' y='2' width='4' height='4'/><rect fill='%231a1c2c' x='4' y='10' width='8' height='4'/></svg>",
   },
   openGraph: {
-    title: "Super Space RPG",
-    description: "A gamified business dashboard in a grid-based top-down RPG environment",
+    title: "Super Space RPG - Pixel Adventure",
+    description: "A gamified pixel art RPG for managing your life aspects",
     type: "website",
   },
 };
@@ -35,9 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
+      <body className="antialiased bg-background text-foreground pixel-font">
         {children}
         <Toaster />
       </body>
